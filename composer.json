@@ -10,7 +10,7 @@
         "psr-4": {
             "Gin0115\\Functional_Plugin\\": "src/"
         },
-        "files": ["src/main.php"]
+        "files": ["src/main.php", "src/Admin/quotes.php", "src/HTML/form-fields.php"]
     },
     "autoload-dev": {
         "psr-4": {
@@ -31,7 +31,7 @@
     },
     "require": {
         "php": ">=7.1.0",
-        "pinkcrab/function-constructors": "~0.1.0"
+        "pinkcrab/function-constructors": "0.1.2"
     },
     "scripts": {
         "test": "phpunit --coverage-clover clover.xml",

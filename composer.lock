@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb028f32a580f70e13126c3c7feb9788",
+    "content-hash": "1513931ac7d5f351044e1c778df5744a",
     "packages": [
         {
             "name": "pinkcrab/function-constructors",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gin0115/pinkcrab_function_constructors.git",
-                "reference": "6b43344ebb54de3af6dedfc625b7c3dea34742c8"
+                "reference": "7da1fed4979b1a4f69ceeb4a1489302cb42ef42a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gin0115/pinkcrab_function_constructors/zipball/6b43344ebb54de3af6dedfc625b7c3dea34742c8",
-                "reference": "6b43344ebb54de3af6dedfc625b7c3dea34742c8",
+                "url": "https://api.github.com/repos/gin0115/pinkcrab_function_constructors/zipball/7da1fed4979b1a4f69ceeb4a1489302cb42ef42a",
+                "reference": "7da1fed4979b1a4f69ceeb4a1489302cb42ef42a",
                 "shasum": ""
             },
             "require": {
@@ -64,7 +64,7 @@
                 "partial application",
                 "piping"
             ],
-            "time": "2021-01-21T23:37:15+00:00"
+            "time": "2021-03-14T23:35:28+00:00"
         }
     ],
     "packages-dev": [
@@ -1148,7 +1148,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/5.7"
+                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/5.7",
+                "reference": "5.7"
             },
             "require": {
                 "php": ">=5.3.2",

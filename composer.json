@@ -10,7 +10,15 @@
         "psr-4": {
             "Gin0115\\Functional_Plugin\\": "src/"
         },
-        "files": ["src/main.php"]
+        "files": [
+            "src/HTML/elements.php",
+            "src/HTML/form-fields.php",
+            "src/main.php",
+            "src/Fixtures/Base_Model.php",
+            "src/Libs/records.php",
+            "src/Meta_Box/admin-meta-box.php",
+            "src/Libs/ultils.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -27,11 +35,14 @@
         "php-stubs/wordpress-stubs": "^5.6.0",
         "dealerdirect/phpcodesniffer-composer-installer": "*",
         "wp-coding-standards/wpcs": "*",
-        "object-calisthenics/phpcs-calisthenics-rules": "*"
+        "object-calisthenics/phpcs-calisthenics-rules": "*",
+        "symfony/finder": "^5.2",
+        "symfony/dom-crawler": "^5.2",
+        "symfony/css-selector": "^5.2"
     },
     "require": {
-        "php": ">=7.1.0",
-        "pinkcrab/function-constructors": "~0.1.0"
+        "php": ">=7.4.0",
+        "pinkcrab/function-constructors": "0.1.2"
     },
     "scripts": {
         "test": "phpunit --coverage-clover clover.xml",

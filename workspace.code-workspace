@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"phpcs.enable": false,
+		"phpcbf.enable": false,
+		"phpcs.executablePath": "/usr/bin/phpcs",
+		"phpcs.standard": "WordPress-Core",
+		"phpcs.showWarnings": true,
+		"phpcs.showSources": true,
+		"phpcbf.executablePath": "/usr/bin/phpcbf",
+		"phpcbf.documentFormattingProvider": true,
+		"phpcbf.standard": "WordPress-Core",
+		"[php]": {
+			"editor.defaultFormatter": "persoderlind.vscode-phpcbf"
+		},
+		"phpcbf.onsave": false,
+		"intelephense.format.enable": false
+	}
+}

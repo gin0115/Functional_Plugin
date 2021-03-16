@@ -12,25 +12,22 @@ div(['id' => 'gin0115-quotes-metabox-post'])
         
     , div(['class' => 'form_field text'])
         ( label( Quote_Meta_Keys::TITLE )('Quote Block Title')
-        , input
-            ( 'text'
-            , Quote_Meta_Keys::TITLE
-            )($model->title)
+        , input( 'text', Quote_Meta_Keys::TITLE)($model->title)
         )
         
     , div(['class' => 'form_field select'])
         ( label( Quote_Meta_Keys::DISPLAY )('Show quote on page')
-        , select
-            ( Quote_Meta_Keys::DISPLAY 
-            , ['YES' => 'Yes', 'NO' => 'No']
-            )($model->show_quote)
+        , select( Quote_Meta_Keys::DISPLAY, ['YES' => 'Yes', 'NO' => 'No'])
+            ($model->show_quote)
         )
 
     , div(['class' => 'form_field select'])
         ( label( Quote_Meta_Keys::POSITION )('Quote position')
         , select
             ( Quote_Meta_Keys::POSITION 
-            , [ Quote_Position::BEFORE => 'Before main content', Quote_Position::AFTER => 'After main content']
+            , [ Quote_Position::BEFORE => 'Before main content'
+              , Quote_Position::AFTER => 'After main content'
+              ]
             )($model->position)
         )
     );

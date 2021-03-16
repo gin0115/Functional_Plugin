@@ -1,4 +1,4 @@
-# A Functional, Elm-ish inspired WordPress Plugin
+# A Functional PHP, Elm-ish inspired WordPress Plugin
 
 Thats a mouthful but I cant think of a better explanation for this plugin. Built around the PinkCrab Function Contrutors library and extended with a range of HTML functions. 
 
@@ -30,3 +30,59 @@ div(['id' => 'gin0115-quotes-metabox-post'])(
 );
 ```
 > The above renders a metabox form fields, interesting right?
+
+## HTML
+
+You can render several HTML elements
+
+### div([attributes])(...children): string(html)
+```php
+use function Gin0115\Functional_Plugin\HTML\Elements\{div,p....}
+print div(['id'=>'parent_container', 'class'=>'container', 'data-foo' => 'bar'])
+    ( p(['class'=>'child'])('Child 1')
+    , p(['class'=>'child'])('Child 2')
+    , p(['class'=>'child'])('Child 2')        
+    );
+
+// <div id="parent_container" class="container" data-foo="bar">
+// <p class="child">Child 1</p>
+// <p class="child">Child 2</p>
+// <p class="child">Child 3</p>
+// </div>
+
+// Using partial application.
+use PinkCrab\FunctionConstructors\{Arrays as Arr};
+print div( ['id'=>'parent_container', 'class'=>'container', 'data-foo' => 'bar'] )
+    (
+        ...Arr\map( p( ['class'=>'child'])) // Wrap each as p tags
+        (['Child 1', 'Child 2', 'Child 3'] ) // The contents .
+    );
+
+// Can be made more compact, but hard to read
+print div( ['id'=>'parent_container', 'class'=>'container', 'data-foo' => 'bar'] )
+    (...Arr\map( p( ['class'=>'child']))(['Child 1', 'Child 2', 'Child 3'] ));
+```
+> The P, Span, H2 all work in the same fasion.
+
+### img div([attributes])(void)
+Unlike the other elements, the img tag has not children and as a result the return function does nothing with the (child) values passed.
+```php
+use function Gin0115\Functional_Plugin\HTML\Elements\{img}
+print img(['src' => 'http://somewhere', 'FLAG' => null])();
+// <img src="http://somewhere" FLAG>
+```
+This isnt ideal for mapping arrays of image urls, what you can do here is create your own function.
+```php
+$img = function(array $attributes = []): callable {
+    return function(string $src) use ($attributes){
+        $attributes['src'] = $src;
+        return img($attributes)();
+    }
+}
+
+$images = array_map($img(['class'=>'image']), ['array of image urls']);
+// ['<img src="image_url1" class="image">'.......]
+
+// You can then pass it into a div
+print div(['class'=>'image_wrapper'])(...$images);
+```

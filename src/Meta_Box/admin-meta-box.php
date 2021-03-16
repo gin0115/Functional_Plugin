@@ -9,9 +9,9 @@
 namespace Gin0115\Functional_Plugin\Meta_Box;
 
 use Gin0115\Functional_Plugin\Fixtures\Base_Model;
-use PinkCrab\FunctionConstructors\{Arrays as Arr};
-use function Gin0115\Functional_Plugin\HTML\Elements\{div, h2, p};
+use function Gin0115\Functional_Plugin\HTML\Elements\{div, h2, p, img};
 use function Gin0115\Functional_Plugin\HTML\Form\{input, select, label};
+use PinkCrab\FunctionConstructors\{Arrays as Arr, GeneralFunctions as F};
 
 // Quote Meta Box Model
 class Meta_Box_Model extends Base_Model {
@@ -52,6 +52,12 @@ function update( Meta_Box_Model $model, array $post ): Meta_Box_Model {
  * @return string
  */
 function view( Meta_Box_Model $model ): string {
+print  div( ['id'=>'parent_container', 'class'=>'container', 'data-foo' => 'bar'] )
+    (...Arr\map( p( ['class'=>'child'] ) ) 
+        ( ['Child 1', 'Child 2', 'Child 3'] ) // The contents of our arrays.
+    );
+
+    
 	return div(['id' => 'gin0115-quotes-metabox-post'])(
         Arr\toString(PHP_EOL)(
 			[ h2( ['class' => 'meta_box_title'] )( 'Setup your quotes' )
@@ -70,6 +76,9 @@ function view( Meta_Box_Model $model ): string {
                 (label( Quote_Meta_Keys::POSITION )('Quote position')
                 ,select( Quote_Meta_Keys::POSITION , _meta_box_postion_options())($model->position)
                 )
+
+            ,p(['selected' => ''])('Hello')
+            ,img(['src' => '#'])('1')
             ]
 		)
     );

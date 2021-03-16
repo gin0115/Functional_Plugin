@@ -99,3 +99,15 @@ $value = ifThen('is_string', 'strtolower', false);
 print $value('HELLO'); // hello
 print $value(['array']); // false
 ```
+
+### ifElse(callable, callable, callable)
+
+Allows the creation of a simple if else statment. The first argument is the conditional, followed by the true and then false callbacks.
+```php
+use function Gin0115\Functional_Plugin\HTML\Elements\{ifElse};
+use function PinkCrab\FunctionConstructors\GeneralFunctions as F;
+
+$even = ifElse(fn($e) => $e % 2 === 0, F\always('Is Even'), F\always('Is False'));
+print $even(222); // Is Even
+print $even(777); // If False
+```

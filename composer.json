@@ -42,7 +42,7 @@
     },
     "require": {
         "php": ">=7.4.0",
-        "pinkcrab/function-constructors": "0.1.2"
+        "pinkcrab/function-constructors": "~0.1.4"
     },
     "scripts": {
         "test": "phpunit --coverage-clover clover.xml",

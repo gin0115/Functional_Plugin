@@ -9,7 +9,7 @@
 namespace Gin0115\Functional_Plugin\HTML\Form;
 
 use function PinkCrab\FunctionConstructors\Arrays\{toString};
-use function Gin0115\Functional_Plugin\Libs\Utils\{array_map_with};
+use function Gin0115\Functional_Plugin\Libs\Utils\{arrayMapWith};
 use function Gin0115\Functional_Plugin\HTML\Elements\{_render_attributes};
 
 
@@ -43,12 +43,12 @@ function select( string $name, array $options, array $attributes = array() ): ca
  */
 function selectOptions( array $options, array $current): string {
 	return toString(\PHP_EOL)
-		(array_map_with(
+		(arrayMapWith(
 			function($key, $value, $current){
 				return sprintf(
 					'<option value="%s"%s>%s</option>',
 					$key,
-					in_array( $key, $current ) ? 'CHECKED' : '',
+					in_array( $key, $current ) ? 'SELECTED' : '',
 					$value
 				);
 			}, $options, $current

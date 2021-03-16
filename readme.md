@@ -7,27 +7,33 @@ This is not a serious project and is more a bit of fun, in essence gets some quo
 Inspired loosely by Elm in regards the HTML syntax and how its used. Starts with a model which is passed through and update function before passing the populate model to a view function. 
 
 ```php
-div(['id' => 'gin0115-quotes-metabox-post'])(
-    Arr\toString(PHP_EOL)(
-        [ h2( ['class' => 'meta_box_title'] )( 'Setup your quotes' )
+div(['id' => 'gin0115-quotes-metabox-post'])
+    ( h2( ['class' => 'meta_box_title'] )( 'Setup your quotes' )
         
-        , div(['class' => 'form_field text'])
-            (label( Quote_Meta_Keys::TITLE )('Quote Block Title')
-            , input('text', Quote_Meta_Keys::TITLE)($model->title)
+    , div(['class' => 'form_field text'])
+            ( label( Quote_Meta_Keys::TITLE )('Quote Block Title')
+            , input
+                ( 'text'
+                , Quote_Meta_Keys::TITLE
+                )($model->title)
             )
         
-        , div(['class' => 'form_field checkbox'])
-            (label( Quote_Meta_Keys::DISPLAY )('Show quote on page')
-            , input('checkbox', Quote_Meta_Keys::DISPLAY)($model->show_quote ? 'YES' : 'NO')
+    , div(['class' => 'form_field select'])
+            ( label( Quote_Meta_Keys::DISPLAY )('Show quote on page')
+            , select
+                ( Quote_Meta_Keys::DISPLAY 
+                , ['YES' => 'Yes', 'NO' => 'No']
+                )($model->show_quote)
             )
-        
-        , div(['class' => 'form_field select'])
-            (label( Quote_Meta_Keys::POSITION )('Quote position')
-            ,select( Quote_Meta_Keys::POSITION , _meta_box_postion_options())($model->position)
+
+    , div(['class' => 'form_field select'])
+            ( label( Quote_Meta_Keys::POSITION )('Quote position')
+            , select
+                ( Quote_Meta_Keys::POSITION 
+                , [ Quote_Position::BEFORE => 'Before main content', Quote_Position::AFTER => 'After main content']
+                )($model->position)
             )
-        ]
-    )
-);
+    );
 ```
 > The above renders a metabox form fields, interesting right?
 
@@ -53,14 +59,13 @@ print div(['id'=>'parent_container', 'class'=>'container', 'data-foo' => 'bar'])
 // Using partial application.
 use PinkCrab\FunctionConstructors\{Arrays as Arr};
 print div( ['id'=>'parent_container', 'class'=>'container', 'data-foo' => 'bar'] )
-    (
-        ...Arr\map( p( ['class'=>'child'])) // Wrap each as p tags
-        (['Child 1', 'Child 2', 'Child 3'] ) // The contents .
+    ( ...Arr\map( p( ['class'=>'child'] ) ) // Wrap each as p tags
+      ( ['Child 1', 'Child 2', 'Child 3'] ) // The contents .
     );
 
 // Can be made more compact, but hard to read
 print div( ['id'=>'parent_container', 'class'=>'container', 'data-foo' => 'bar'] )
-    (...Arr\map( p( ['class'=>'child']))(['Child 1', 'Child 2', 'Child 3'] ));
+    ( ...Arr\map( p( ['class'=>'child'] ) )( ['Child 1', 'Child 2', 'Child 3'] ) );
 ```
 > The P, Span, H2 all work in the same fasion.
 
@@ -85,4 +90,19 @@ $images = array_map($img(['class'=>'image']), ['array of image urls']);
 
 // You can then pass it into a div
 print div(['class'=>'image_wrapper'])(...$images);
+```
+### ifThen(callable, callable, mixed)
+
+Allows for the creation of simple ifThen statements, will return the 3rd param id the initial conditional fails.
+```php
+use function Gin0115\Functional_Plugin\HTML\Elements\{ifThen};
+
+$value = ifThen
+    ( 'is_string'
+    , 'strtolower'
+    , false
+    );
+
+print $value('HELLO'); // hello
+print $value(['array']); // false
 ```

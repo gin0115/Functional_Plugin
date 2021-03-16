@@ -136,11 +136,10 @@ function update_on_render_meta_box( Meta_Box_Model $model, array $post_meta ) {
  * @return string
  */
 function view( Meta_Box_Model $model ): string {
-	return div(['id' => 'gin0115-quotes-metabox-post'])(
-        Arr\toString(PHP_EOL)(
-			[ h2( ['class' => 'meta_box_title'] )( 'Setup your quotes' )
+	return div(['id' => 'gin0115-quotes-metabox-post'])
+        ( h2( ['class' => 'meta_box_title'] )( 'Setup your quotes' )
 			
-            , div(['class' => 'form_field text'])
+        , div(['class' => 'form_field text'])
                 ( label( Quote_Meta_Keys::TITLE )('Quote Block Title')
                 , input
                     ( 'text'
@@ -148,7 +147,7 @@ function view( Meta_Box_Model $model ): string {
                     )($model->title)
                 )
             
-            , div(['class' => 'form_field select'])
+        , div(['class' => 'form_field select'])
                 ( label( Quote_Meta_Keys::DISPLAY )('Show quote on page')
                 , select
                     ( Quote_Meta_Keys::DISPLAY 
@@ -156,15 +155,13 @@ function view( Meta_Box_Model $model ): string {
                     )($model->show_quote)
                 )
 
-            , div(['class' => 'form_field select'])
+        , div(['class' => 'form_field select'])
                 ( label( Quote_Meta_Keys::POSITION )('Quote position')
                 , select
                     ( Quote_Meta_Keys::POSITION 
                     , [ Quote_Position::BEFORE => 'Before main content', Quote_Position::AFTER => 'After main content']
                     )($model->position)
                 )
-            ]
-		)
-    );
+		);
 }
 

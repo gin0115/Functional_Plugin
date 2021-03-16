@@ -94,11 +94,7 @@ Allows for the creation of simple ifThen statements, will return the 3rd param i
 ```php
 use function Gin0115\Functional_Plugin\HTML\Elements\{ifThen};
 
-$value = ifThen
-    ( 'is_string'
-    , 'strtolower'
-    , false
-    );
+$value = ifThen('is_string', 'strtolower', false);
 
 print $value('HELLO'); // hello
 print $value(['array']); // false

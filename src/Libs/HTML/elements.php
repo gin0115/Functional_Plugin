@@ -6,7 +6,7 @@
  * @author Glynn Quelch <glynn@pinkcrab.co.uk>
  */
 
-namespace Gin0115\Functional_Plugin\HTML\Elements;
+namespace Gin0115\Functional_Plugin\Libs\HTML\Elements;
 
 use PinkCrab\FunctionConstructors\{
 	Strings as Str
@@ -97,7 +97,7 @@ function _render_attributes( array $attributes ): string {
 			// Selects the template, based on the attribute value.
 			// If empty string or null, will not include the assigment.
 			$template = ! is_null($attributes[ $key ]) && strlen($attributes[ $key ]) >= 1
-				? '%s="%s"' : '%s';
+				? ' %s="%s"' : ' %s';
 
 			$carry = $carry . \sprintf($template, $key, $attributes[ $key ]);
 			return $carry;

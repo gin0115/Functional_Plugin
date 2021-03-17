@@ -11,13 +11,14 @@
             "Gin0115\\Functional_Plugin\\": "src/"
         },
         "files": [
-            "src/HTML/elements.php",
-            "src/HTML/form-fields.php",
             "src/main.php",
             "src/Fixtures/Base_Model.php",
+            "src/Quotes/admin.php",
+            "src/Libs/HTML/elements.php",
+            "src/Libs/HTML/form-fields.php",
             "src/Libs/records.php",
-            "src/Meta_Box/admin-meta-box.php",
-            "src/Libs/ultils.php"
+            "src/Libs/ultils.php",
+            "src/Libs/HTTP/client.php"
         ]
     },
     "autoload-dev": {

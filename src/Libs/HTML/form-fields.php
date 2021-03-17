@@ -6,11 +6,11 @@
  * @author Glynn Quelch <glynn@pinkcrab.co.uk>
  */
 
-namespace Gin0115\Functional_Plugin\HTML\Form;
+namespace Gin0115\Functional_Plugin\Libs\HTML\Form;
 
 use function PinkCrab\FunctionConstructors\Arrays\{toString};
 use function Gin0115\Functional_Plugin\Libs\Utils\{arrayMapWith};
-use function Gin0115\Functional_Plugin\HTML\Elements\{_render_attributes};
+use function Gin0115\Functional_Plugin\Libs\HTML\Elements\{_render_attributes};
 
 
 /**
@@ -70,7 +70,7 @@ function input( string $type, string $name, array $attributes = array() ): calla
 			$type,
 			$name,
 			$name,
-			join( $attributes ),
+			_render_attributes($attributes),
 			$current
 		);
 	};
@@ -78,6 +78,7 @@ function input( string $type, string $name, array $attributes = array() ): calla
 
 /**	
  * Parses a label
+ * 
  * 
  * @param string $name
  * @return callable(string): string

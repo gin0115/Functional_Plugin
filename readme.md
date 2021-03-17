@@ -18,7 +18,7 @@ div(['id' => 'gin0115-quotes-metabox-post'])
     , div(['class' => 'form_field select'])
         ( label( Quote_Meta_Keys::DISPLAY )('Show quote on page')
         , select( Quote_Meta_Keys::DISPLAY, ['YES' => 'Yes', 'NO' => 'No'])
-            ($model->show_quote)
+            ($model->showQuote)
         )
 
     , div(['class' => 'form_field select'])
@@ -40,7 +40,7 @@ You can render several HTML elements
 
 ### div([attributes])(...children): string(html)
 ```php
-use function Gin0115\Functional_Plugin\HTML\Elements\{div,p....}
+use function Gin0115\Functional_Plugin\Libs\HTML\Elements\{div,p....}
 print div(['id'=>'parent_container', 'class'=>'container', 'data-foo' => 'bar'])
     ( p(['class'=>'child'])('Child 1')
     , p(['class'=>'child'])('Child 2')
@@ -69,7 +69,7 @@ print div( ['id'=>'parent_container', 'class'=>'container', 'data-foo' => 'bar']
 ### img div([attributes])(void)
 Unlike the other elements, the img tag has not children and as a result the return function does nothing with the (child) values passed.
 ```php
-use function Gin0115\Functional_Plugin\HTML\Elements\{img}
+use function Gin0115\Functional_Plugin\Libs\HTML\Elements\{img}
 print img(['src' => 'http://somewhere', 'FLAG' => null])();
 // <img src="http://somewhere" FLAG>
 ```
@@ -92,7 +92,7 @@ print div(['class'=>'image_wrapper'])(...$images);
 
 Allows for the creation of simple ifThen statements, will return the 3rd param id the initial conditional fails.
 ```php
-use function Gin0115\Functional_Plugin\HTML\Elements\{ifThen};
+use function Gin0115\Functional_Plugin\Libs\HTML\Elements\{ifThen};
 
 $value = ifThen('is_string', 'strtolower', false);
 
@@ -104,7 +104,7 @@ print $value(['array']); // false
 
 Allows the creation of a simple if else statment. The first argument is the conditional, followed by the true and then false callbacks.
 ```php
-use function Gin0115\Functional_Plugin\HTML\Elements\{ifElse};
+use function Gin0115\Functional_Plugin\Libs\HTML\Elements\{ifElse};
 use function PinkCrab\FunctionConstructors\GeneralFunctions as F;
 
 $even = ifElse(fn($e) => $e % 2 === 0, F\always('Is Even'), F\always('Is False'));
